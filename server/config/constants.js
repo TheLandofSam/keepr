@@ -16,12 +16,12 @@ const models = {
   vault:{
     name: 'Vault',
     endpoint: 'vaults',
-    useCustomRoutes: true //tells app to go into the custom routes dir and use the custom route
+    useCustomRoutes: false //if true, tells app to go into the custom routes dir and use the custom route
   },
   keep:{
     name: 'Keep',
     endpoint: 'keeps',
-    useCustomRoutes: true,
+    useCustomRoutes: false,
   }
 }
 

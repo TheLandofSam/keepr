@@ -27,14 +27,14 @@ export default {
 
   getKeeps: {
     path: '/keeps',
-    reqTyoe: 'get',
+    reqType: 'get',
     method(req, res, next){
       let actions = "Find Keeps"
       Keeps.find()
         .then(keeps => {
           var publicKeeps = []
           for (var i = 0; i < keeps.length; i++) {
-            var keep = keep[i]
+            var keep = keeps[i]
             if (keep.private == false) {
               publicKeeps.push(keep)
             }
