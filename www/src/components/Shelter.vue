@@ -1,6 +1,6 @@
-<template>
-  <div class="hello">
-    <h1>Welcome to Keepr</h1>
+<template><!--a publicKeeps space-->
+  <div class="shelter">
+    <h1>Keepurrrr</h1>
     <p>Get Started</p>
     <ul>
       <li><router-link to="login">Login</router-link></li>
