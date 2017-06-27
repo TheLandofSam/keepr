@@ -28,15 +28,16 @@
         <div class="col-md-3"></div>
       </div><!--row C close-->
       <div class="row D">
-        <button type="button" ><h4>If you are thinking..."cats!"... then <router-link to '/register'>be a Keepurrr!</router-link></h4></button>
+        <h4>If you are thinking..."cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
       </div>
       <div class="row"><!--empty bottom buffer--></div>
+    </div>
   </div>
 </template>
 
 
 <script>
-import login from './login'
+import Login from './Login'
 export default {
   name: 'login',
   data(){

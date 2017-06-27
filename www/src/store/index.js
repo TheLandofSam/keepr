@@ -113,6 +113,7 @@ export default {
         })
     },
 
+
     login({commit, dispatch}, user) {
       auth.post('/login', user)
         .then(res => {

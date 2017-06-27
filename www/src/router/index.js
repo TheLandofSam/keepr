@@ -17,22 +17,22 @@ export default new Router({
       component: Home
     },
     {
-    path: '/login',
+    path: '/Login',
     name: 'Login',
     component: Login
   },
   {
-    path: '/register',
+    path: '/Register',
     name: 'Register',
     component: Register
   },
   {
-    path: '/shelter',
+    path: '/Shelter',
     name: 'Shelter',
     component: Shelter
   },
   {
-    path: '/box',
+    path: '/Box',
     name: 'Box',
     component: Box
   }

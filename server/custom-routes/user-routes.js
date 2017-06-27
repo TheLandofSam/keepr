@@ -18,7 +18,7 @@ export default {
   },
 
   getUserKeeps: {
-    path: '/vaults/:vaultId/keeps',
+    path: '/userkeeps',
     reqType: 'get',
     method(req, res, next) {
       let action = 'return vault with user keeps'

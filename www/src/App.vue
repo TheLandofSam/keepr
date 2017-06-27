@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import Register from './components/register'
-import Login from './components/login'
-import Error from '.components/error'
+import Register from './components/Register'
+import Login from './components/Login'
+
 export default {
   name: 'app',
   components:{
-    Error,
+    
     Register,
     Login
   },
