@@ -76,8 +76,84 @@ let handleError = (err) => {
 export default {
   // ALL DATA LIVES IN THE STATE
   state,
+  mutations: {
+    setKeeps(state, keeps) {
+      state.keeps = keeps
+    },
+    setMyVaults(state, MyVaults) {
+      state.MyVaults = MyVaults
+    },
+    setMyKeeps(state, myKeeps) {
+      state.myKeeps = myKeeps
+    },
+    setUser(state, user) {
+      state.user = user
+    }
+  },
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
   actions: {
+    getKeeps({commit, dispatch}) {
+      api('/keeps')
+        .then(res => {
+          commit('setKeeps', res.data.data)
+        })
+        .catch(handleError)
+    },
+    getMyVaults({commit, dispatch}) {
+      api('/uservaults')//this should be vaults by user id//****fix path in server!***
+        .then(res => {
+          commit('setMyVaults', res.data.data)
+        })
+        .catch(handleError)
+    },
+    getMyKeeps({commit, dispatch}) {
+      api('/userkeeps')//this should be keeps by vault id
+        .then(res=> {
+          commit('setMyKeeps', res.data.data)
+        })
+    },
+
+    login({commit, dispatch}, user) {
+      auth.post('/login', user)
+        .then(res => {
+          console.log(res)
+          commit('setUser', res.data.data)// state.user = res.data.data || {}///??
+          router.push('/keeps')
+        })
+        .catch(handleError)
+      //needs to authenticate whether this person is legit and then if not reroute to register, 
+      // or invalid username or password
+    },
+    register({commit, dispatch}, user) {
+      auth.post('/register', user)
+        .then(res => {
+          console.log(res)
+          if (res.data.error) {
+            return handleError(res.data.error)
+          }
+          commit('setUser', res.data.data)// state.user = res.data.data || {}///?
+          router.push('/keeps')
+        })
+        .catch(handleError)
+    },
+    getAuth({commit, dispatch}) {
+      auth('authenticate')
+        .then(res => {
+          commit('setUser', res.data.data)// state.user = res.data.data || {}///??
+          router.push('/keeps')
+        })
+        .catch((err => {
+        }))
+    },
+    clearError() {
+      state.error = {}
+    },
+    logout({commit, dispatch}, user) {
+      auth.delete('logout', user)
+        .then(res => {
+          router.push('/')
+        }).catch(handleError)
+    }
   }
 
 }

@@ -28,7 +28,7 @@
         <div class="col-md-3"></div>
       </div><!--row C close-->
       <div class="row D">
-        <button type="button" ><h4>If you are thinking..."cats!"... then be a Keepurrr!</h4></button>
+        <button type="button" ><h4>If you are thinking..."cats!"... then <router-link to '/register'>be a Keepurrr!</router-link></h4></button>
       </div>
       <div class="row"><!--empty bottom buffer--></div>
   </div>
@@ -41,22 +41,13 @@ export default {
   name: 'login',
   data(){
     return{
-      regForm: false,
-      name: "",
-      email: "",
-      password: "",
-      
+      user: {}
     }
-
   },
   computed:{},
   methods:{
-    toggleTrue(){
-      this.regForm = true
-    }
     login(){
-
-      this.regForm = false
+    this.$store.dispatch('login', this.user)
     }
   },
   components:{}

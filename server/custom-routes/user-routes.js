@@ -1,27 +1,37 @@
 let Vaults = require('../models/vault')
+let Keeps = require('../models/keep')
 
 export default {
-  userVaults: {//get vaults by userId
-    path: '/userVaults',
+  getUserVaults: {
+    path: '/uservaults',
     reqType: 'get',
     method(req, res, next){
-      let action = 'Find User Vaults'
+      let action = 'find user vaults'
       Vaults.find({creatorId: req.session.uid})
         .then(vaults => {
           res.send(handleResponse(action, vaults))
+        })
+        .catch(error => {
+          return next(handleResponse(action, null, error))
         })
     }
   },
 
   getUserKeeps: {
-    path: '/userkeeps',
+    path: '/vaults/:vaultId/keeps',
     reqType: 'get',
     method(req, res, next) {
-      let action = 'Return User Keeps'
-      Keeps.find({userId: req.session.uid})//would this be user Name?
-      .then(keeps => {
-        return next(handleResponse(action, null, error))
-      })
+      let action = 'return vault with user keeps'
+      Vaults.findById(req.params.vaultId)
+        .then(vault => {
+          Keeps.find({vaults: req.params.vaultId})
+            .then(keeps => {
+              vault.keeps = keeps
+              res.send(handleResponse(action, vault.keeps))
+            })
+        }).catch(error => {
+          return next(handleResponse(action, null, error))
+        })
     }
   },
 
@@ -29,7 +39,7 @@ export default {
     path: '/keeps',
     reqType: 'get',
     method(req, res, next){
-      let actions = "Find Keeps"
+      let actions = "find keeps"
       Keeps.find()
         .then(keeps => {
           var publicKeeps = []

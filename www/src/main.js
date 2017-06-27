@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import Register from '.components/register'
+import Login from './compondents/login'
 
 Vue.config.productionTip = false
 

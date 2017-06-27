@@ -6,8 +6,19 @@
 </template>
 
 <script>
+import Register from './components/register'
+import Login from './components/login'
+import Error from '.components/error'
 export default {
   name: 'app',
+  components:{
+    Error,
+    Register,
+    Login
+  },
+  mounted(){
+    this.$store.dispatch('getAuth')
+  }
 }
 </script>
 
