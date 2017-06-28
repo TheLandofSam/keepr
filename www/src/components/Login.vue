@@ -60,5 +60,7 @@ export default {
 
 
 <style scoped>
-
+input {
+  max-width: 300px;
+}
 </style>

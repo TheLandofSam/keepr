@@ -7,7 +7,7 @@
         <div class="col-md-4">
           <h1>Keepurrrr</h1>
           <br>
-          <h4>Hello {{user.name}}, welcome to our Shelter! From this page you can browse for pictures, memes, or items for, of, and about cats, then you can save them to your boxes. You can also add your strays to the Shelter for others to view and save to their boxes. (And, you can also find and post non-cat stuff here, but the kitties will be a bit confused by this behavior...)</h4>
+          <h4>Hello {{user.name}}, welcome to our Shelter! From this page you can browse for pictures, memes, or items for, of, and about cats. When you find something that makes you purrr, you can save them to your boxes. You can also add your strays to the Shelter for others to view and save to their boxes. (And, you can also find and post non-cat stuff here, but this behavior is strongly discouraged.)</h4>
         </div>
         <div class="col-md-1"><!--buffer space--></div>
         <div class="col-md-1">
@@ -18,13 +18,28 @@
         </div>
         <div class="col-md-2"><!--buffer space--></div>
       </div><!--ROW B CLOSES HERE-->
-      <div class="row C"></div>
+      <div class="row C">
+        <div class="col-md-2"></div>
+        <div class="col-md-4 card">
+          <form @submit.prevent="createKeep">
+                <input type="text" v-model="title" required placeholder="title of new keep...">
+                <input type="text" v-model="imgUrl" required placeholder="Url of keep...">
+                <input type="text" v-model="body" required placeholder="description of new keep...">
+                <input type="text" v-model="vault" required placeholder="To which box do you want to add this purrr?...">
+                <button @click="createKeep">+</button>
+          </form>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
       <div class="row D">
-        <div class="col-md-3 card">
-          <div v-for="keep in keeps" :key="keep.keepIds">
-            {{keep.title}}
-            {{keep.imgUrl}}
+        <div class="col-md-3" v-for="keep in keeps">
+          <div class="card">
+            <router-link :to="'/keep' + keep.id">
+              {{keep.title}}
+              {{keep.body}}
+            </router-link>
           </div>
+
         </div>
       </div><!--ROW D CLOSES HERE-->
       <div class="row E"><!--empty bottom buffer--></div>
@@ -41,11 +56,15 @@
 </template>
 
 <script>
+import Box from './Box'
 export default {
   name: 'Shelter',
   data () {
     return {
-
+      title: '',
+      imgUrl: '',
+      body: '',
+      vault: '',
     }
   },
   mounted(){
@@ -61,17 +80,19 @@ export default {
     }
   },
   methods: {
-    // createKeep(){
-    //   this.$store.dispatch('createKeep', {
-    //     title: this.title,
-    //     imgUrl: this.imgUrl,
-    //     vaults: this.vault,
-    //     author: this.user.name,
-    //   })
-    //   keepCount += 1,
-    //   viewCount += 1,
-    //   shareCount += 1
-    // },
+    createKeep(){
+      this.$store.dispatch('createKeep', {
+        title: this.title,
+        imgUrl: this.imgUrl,
+        body: this.body,
+        vault: this.vault,
+        author: this.user.name,
+        keepIds: this.$route.params.id
+      })
+      keepCount += 1,
+      viewCount += 1,
+      shareCount += 1
+    },
     logout(user) {
       this.$store.dispatch('logout', this.user)
     }
@@ -81,6 +102,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.card{
+  background-color: lightslategray;
+  min-height: 50px;
+}
 h1, h2 {
   font-weight: normal;
 }

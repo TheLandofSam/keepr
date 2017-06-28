@@ -82,9 +82,12 @@ let handleError = (err) => {
 export default new Vuex.Store ({
   // ALL DATA LIVES IN THE STATE
   state,
-  mutations: {
+  mutations: {//there only job is to modify the state object, they are a middleman
     setKeeps(state, keeps) {
       state.keeps = keeps
+      // keeps.forEach(keep=> {//this allowed both to display but duplicated things. So, I went back to seeing only my created keeps without the hard coded keeps
+      // state.keeps.push(keep)
+    //state.keeps = keeps//this is overwriting the hardcoded keeps with my postman keep
     },
     setMyVaults(state, MyVaults) {
       state.MyVaults = MyVaults
@@ -106,18 +109,34 @@ export default new Vuex.Store ({
         .catch(handleError)
     },
     getMyVaults({commit, dispatch}) {
-      api('/uservaults')//this should be vaults by user id//****fix path in server!***
+      api('/vaults')//this should be vaults by user id//****fix path in server!***
         .then(res => {
           commit('setMyVaults', res.data.data)
         })
         .catch(handleError)
     },
     getMyKeeps({commit, dispatch}) {
-      api('/userkeeps')//this should be keeps by vault id
+      api('/keeps')//this should be keeps by vault id
         .then(res=> {
           commit('setMyKeeps', res.data.data)
         })
     },
+    createKeep({ commit, dispatch }, keep) {
+      api.post('/keeps', keep)
+      api.post('/userkeeps', keep)
+        .then(res => {
+          dispatch('getMyKeeps')///or vaults???
+        })
+        .catch(handleError)
+    },
+    createVault({ commit, dispatch }, vault) {
+      api.post('/vaults', vault)
+        .then(res => {
+          dispatch('getMyVaults')
+        })
+        .catch(handleError)
+    },
+
 
     getAuth({commit, dispatch}) {
       auth('authenticate')

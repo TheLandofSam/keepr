@@ -2,8 +2,8 @@ let Vaults = require('../models/vault')
 let Keeps = require('../models/keep')
 
 export default {
-  getUserVaults: {
-    path: '/uservaults',
+  getMyVaults: {
+    path: '/myVaults',
     reqType: 'get',
     method(req, res, next){
       let action = 'find user vaults'
@@ -17,8 +17,8 @@ export default {
     }
   },
 
-  getUserKeeps: {
-    path: '/userkeeps',
+  getMyKeeps: {
+    path: '/myKeeps',
     reqType: 'get',
     method(req, res, next) {
       let action = 'return vault with user keeps'
