@@ -1,5 +1,5 @@
 <template>
-  <div id="app wall">
+  <div id="app">
     <img src="./assets/logo.jpg">
     <router-view></router-view>
   </div>
@@ -27,14 +27,10 @@ export default {
   
 }
 body, html{
-  height: 100%;
-}
-
-#wall{
-  background-image: url ("http://i44.photobucket.com/albums/f3/suhmantha/catWallpaper_zps6hwlzmfz.jpg");
-  height: 100%;
-  background-position: center;
+  height: 100vh;
+  background: url("http://i44.photobucket.com/albums/f3/suhmantha/catWallpaper_zps6hwlzmfz.jpg");
+  /*background-position: center;*/
   background-repeat: repeat;
-  background-size: cover;
+  /*background-size: cover;*/
 }
 </style>
