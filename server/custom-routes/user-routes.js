@@ -39,7 +39,7 @@ export default {
     path: '/keeps',
     reqType: 'get',
     method(req, res, next){
-      let actions = "find keeps"
+      let action = "find keeps"
       Keeps.find()
         .then(keeps => {
           var publicKeeps = []
