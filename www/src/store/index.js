@@ -109,21 +109,20 @@ export default new Vuex.Store ({
         .catch(handleError)
     },
     getMyVaults({commit, dispatch}) {
-      api('/vaults')//this should be vaults by user id//****fix path in server!***
+      api('/myVaults')//this should be vaults by user id//****fix path in server!***
         .then(res => {
           commit('setMyVaults', res.data.data)
         })
         .catch(handleError)
     },
     getMyKeeps({commit, dispatch}) {
-      api('/keeps')//this should be keeps by vault id
+      api('/myKeeps')//this should be keeps by vault id
         .then(res=> {
           commit('setMyKeeps', res.data.data)
         })
     },
     createKeep({ commit, dispatch }, keep) {
       api.post('/keeps', keep)
-      api.post('/myKeeps', keep)
         .then(res => {
           dispatch('getMyKeeps')///or vaults???
         })
@@ -133,6 +132,13 @@ export default new Vuex.Store ({
       api.post('/vaults', vault)
         .then(res => {
           dispatch('getMyVaults')
+        })
+        .catch(handleError)
+    },
+    removeKeep({ commit, dispatch}, keep) {
+      api.delete('/myKeeps', keep)
+        .then(res => {
+          dispatch('getMyKeeps')
         })
         .catch(handleError)
     },

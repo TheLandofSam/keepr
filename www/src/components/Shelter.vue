@@ -20,16 +20,15 @@
       </div><!--ROW B CLOSES HERE-->
       <div class="row C">
         <div class="col-md-2"></div>
-        <div class="col-md-4 card">
+        <div class="col-md-6 card">
           <form @submit.prevent="createKeep">
                 <input type="text" v-model="title" required placeholder="title of new keep...">
                 <input type="text" v-model="imgUrl" required placeholder="Url of keep...">
                 <input type="text" v-model="body" required placeholder="description of new keep...">
-                <input type="text" v-model="vault" required placeholder="To which box do you want to add this purrr?...">
                 <button @click="createKeep">+</button>
           </form>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-4"></div>
       </div>
       <div class="row D">
         <div class="col-md-3" v-for="keep in keeps">
@@ -37,19 +36,13 @@
             <router-link :to="'/keep' + keep.id">
               {{keep.title}}
               {{keep.body}}
+              <img :src="keep.imgUrl">
             </router-link>
           </div>
 
         </div>
       </div><!--ROW D CLOSES HERE-->
       <div class="row E"><!--empty bottom buffer--></div>
-
-    
-    <ul><!--v for loop for everything in keeps to make keeps dispaly on this-->
-      
-    </ul>
-    <hr>
-
 
     </div>
   </div>
@@ -65,6 +58,7 @@ export default {
       imgUrl: '',
       body: '',
       vault: '',
+      creatorId: this.$store.state.user._id
     }
   },
   mounted(){
@@ -85,19 +79,18 @@ export default {
         title: this.title,
         imgUrl: this.imgUrl,
         body: this.body,
-        vault: this.vault,
-        author: this.user.name,
-        keepIds: this.$route.params.id
+        vault: this.vault._id,
+        creatorId: this.creatorId 
       })
-      keepCount += 1,
-      viewCount += 1,
-      shareCount += 1
     },
     logout(user) {
       this.$store.dispatch('logout', this.user)
     }
   }
 }
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -105,6 +98,7 @@ export default {
 .card{
   background-color: lightslategray;
   min-height: 50px;
+  margin: 10px;
 }
 h1, h2 {
   font-weight: normal;
@@ -119,7 +113,9 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-
+img{
+  max-height: 120px;
+}
 a {
   color: #42b983;
 }

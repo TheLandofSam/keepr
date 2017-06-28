@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row A">
         <div class="col-md-1"></div>
         <div class="col-md-3">
