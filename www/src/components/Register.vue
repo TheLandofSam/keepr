@@ -10,10 +10,10 @@
       </div><!--row A close-->
       <div class="row B">
         <form @submit.prevent="register">
-          <input type="text" v-model="user.name" required placeholder="name">
-          <input type="email" v-model="user.email" required placeholder="email">
-          <input type="password" v-model="user.password" require placeholder="set password">
-          <button type="submit">purrr</button>
+          <input type="text" class="form-control" v-model="user.name" required placeholder="name">
+          <input type="email" class="form-control" v-model="user.email" required placeholder="email">
+          <input type="password" class="form-control" v-model="user.password" require placeholder="set password">
+          <button class="btn btn-default" type="submit">purrr</button>
         </form>
       </div><!--row B close-->
       <div class="row C"><!--empty bottom buffer--></div>
@@ -25,8 +25,8 @@
 <script>
 export default {
   name: 'register',
-  data(){
-    return{
+  data() {
+    return {
       user: {}
     }
   },

@@ -20,15 +20,18 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
           <form @submit.prevent="login">
-            <input type="email" v-model="user.email" required placeholder="email">
-            <input type="password" v-model="user.password" require placeholder="password">
-            <button type="submit">submit</button>
+            <input type="email" class="form-control" v-model="user.email" required placeholder="email">
+            <input type="password" class="form-control" v-model="user.password" required placeholder="password">
+            <button class="btn btn-default" type="submit">submit</button>
           </form>
         </div>
         <div class="col-md-3"></div>
       </div><!--row C close-->
       <div class="row D">
-        <h4>If you are thinking..."cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
+        <h4>If you are thinking..."I love cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
+        <h4>If you are thinking..."I want cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
+        <h4>If you are thinking..."I must have cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
+        <h4>If you are thinking..."...stupid cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link> because you need some cats.</h4>
       </div>
       <div class="row"><!--empty bottom buffer--></div>
     </div>
@@ -37,7 +40,7 @@
 
 
 <script>
-import Login from './Login'
+
 export default {
   name: 'login',
   data(){

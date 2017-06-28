@@ -1,10 +1,9 @@
 <template><!--a publicKeeps space-->
   <div class="shelter">
     <h1>Keepurrrr</h1>
-    <p>Get Started</p>
+    <p>(Shelter)</p>
     <ul><!--v for loop for everything in keeps to make keeps dispaly on this-->
-      <li><router-link to="login">Login</router-link></li>
-      <li><router-link to="register">Register</router-link></li>
+      
     </ul>
     <hr>
   </div>

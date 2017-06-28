@@ -11,6 +11,12 @@ let api = axios.create({
   withCredentials: true
 })
 
+let auth = axios.create({
+  baseURL: 'http://localhost:3000/',
+  timeout: 2000,
+  withCredentials: true
+})
+
 // REGISTER ALL DATA HERE
 let state = {
   user: {},
@@ -73,7 +79,7 @@ let handleError = (err) => {
   state.error = err
 }
 
-export default {
+export default new Vuex.Store ({
   // ALL DATA LIVES IN THE STATE
   state,
   mutations: {
@@ -86,8 +92,8 @@ export default {
     setMyKeeps(state, myKeeps) {
       state.myKeeps = myKeeps
     },
-    setUser(state, user) {
-      state.user = user
+    user(state, user) {
+      state.user = user || {}
     }
   },
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
@@ -113,38 +119,43 @@ export default {
         })
     },
 
-
+    getAuth({commit, dispatch}) {
+      auth('authenticate')
+        .then(res => {
+          commit('user', res.data.data)// state.user = res.data.data || {}///??
+          console.log(res)
+          if(res.data.data) {
+          router.push('/Shelter')
+          }else{
+            router.push('/')
+          }
+        })
+        .catch(err => {
+          router.push('/')
+        })
+    },
     login({commit, dispatch}, user) {
-      auth.post('/login', user)
+      auth.post('login', user)
         .then(res => {
           console.log(res)
-          commit('setUser', res.data.data)// state.user = res.data.data || {}///??
-          router.push('/keeps')
+          commit('user', res.data.data)// state.user = res.data.data || {}///??
+          router.push('/Shelter')//or is this /keeps?
         })
         .catch(handleError)
       //needs to authenticate whether this person is legit and then if not reroute to register, 
       // or invalid username or password
     },
     register({commit, dispatch}, user) {
-      auth.post('/register', user)
+      auth.post('register', user)
         .then(res => {
           console.log(res)
           if (res.data.error) {
             return handleError(res.data.error)
           }
-          commit('setUser', res.data.data)// state.user = res.data.data || {}///?
-          router.push('/keeps')
+          commit('user', res.data.data)// state.user = res.data.data || {}///?
+          router.push('/Shelter')
         })
         .catch(handleError)
-    },
-    getAuth({commit, dispatch}) {
-      auth('authenticate')
-        .then(res => {
-          commit('setUser', res.data.data)// state.user = res.data.data || {}///??
-          router.push('/keeps')
-        })
-        .catch((err => {
-        }))
     },
     clearError() {
       state.error = {}
@@ -154,8 +165,9 @@ export default {
         .then(res => {
           router.push('/')
         }).catch(handleError)
-    }
+    },
+    
   }
 
-}
+})
 

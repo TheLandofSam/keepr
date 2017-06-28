@@ -6,19 +6,13 @@
 </template>
 
 <script>
-import Register from './components/Register'
-import Login from './components/Login'
+
 
 export default {
   name: 'app',
-  components:{
-    
-    Register,
-    Login
-  },
-  mounted(){
-    this.$store.dispatch('getAuth')
-  }
+  // mounted() {
+  //   this.$store.dispatch('getAuth')
+  // }
 }
 </script>
 
