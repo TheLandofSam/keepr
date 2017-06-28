@@ -20,8 +20,8 @@ let auth = axios.create({
 // REGISTER ALL DATA HERE
 let state = {
   user: {},
-  myVaults: {},
-  myKeeps: {},
+  myVaults: [{}],
+  myKeeps: [{}],
   //Dummy Data
   keeps: [{
     title: 'Learn to Draw the Meow Way',
@@ -89,8 +89,8 @@ export default new Vuex.Store ({
       // state.keeps.push(keep)
     //state.keeps = keeps//this is overwriting the hardcoded keeps with my postman keep
     },
-    setMyVaults(state, MyVaults) {
-      state.MyVaults = MyVaults
+    setMyVaults(state, myVaults) {
+      state.myVaults = myVaults
     },
     setMyKeeps(state, myKeeps) {
       state.myKeeps = myKeeps
@@ -123,7 +123,7 @@ export default new Vuex.Store ({
     },
     createKeep({ commit, dispatch }, keep) {
       api.post('/keeps', keep)
-      api.post('/userkeeps', keep)
+      api.post('/myKeeps', keep)
         .then(res => {
           dispatch('getMyKeeps')///or vaults???
         })

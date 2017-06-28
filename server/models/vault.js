@@ -10,7 +10,6 @@ let schema = new Schema({
   description: { type: String},
   created: { type: Number, required: true, default: Date.now() },
   creatorId: { type: ObjectId, ref: models.user.name, required: true},
-  vaultId: {type: ObjectId, ref: models.vault.name},
   keepIds: [{type: ObjectId, ref: models.keep.name}],
   
 });

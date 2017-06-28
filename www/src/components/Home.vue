@@ -18,14 +18,14 @@
       <div class="col-md-3" v-for="vault in vaults">
           <div class="well">
             <router-link :to="'/vault' + vault.id">
-              {{vault.title}}
+              {{vault.name}}
               {{vault.description}}
             </router-link>
           </div>
       </div>
       <div class="col-md-3">
         <form @submit.prevent="createVault">
-                <input type="text" v-model="title" required placeholder="title of new keep...">
+                <input type="text" v-model="name" required placeholder="name of new keep...">
                 <input type="text" v-model="description" required placeholder="description of new keep...">
                 <button @click="createVault">+</button>
         </form>
@@ -43,7 +43,7 @@ export default {
   name: 'Home',
   data(){
     return {
-      title: '',
+      name: '',
       description: '',
       creatorId: this.$store.state.user._id
     }
@@ -65,7 +65,7 @@ export default {
     },
     createVault(){
       this.$store.dispatch('createVault', {
-        title: this.title,
+        name: this.name,
         description: this.description,
         vaultId: this.$route.params.id,
         keepIds: this.$route.params.id,
