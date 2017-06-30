@@ -1,31 +1,55 @@
 <template><!--a publicKeeps space-->
   <div class="shelter">
     <div class="container">
-      <div class="row A"><!--empty top buffer--></div>
+      <div class="row A">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+          <img src="http://i44.photobucket.com/albums/f3/suhmantha/logo_zpslwie0kuo.jpg">
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-2">
+          <router-link :to="'/Home'"><img src="http://i44.photobucket.com/albums/f3/suhmantha/catinboxcolor_zps9pw7a4pm.jpg"></router-link>
+        </div>
+        <div class="col-md-1">
+          <img height="55" width="200" @click="logout(user)"src="http://i44.photobucket.com/albums/f3/suhmantha/Logout_zpswppo7usx.jpg"></button>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
       <div class="row B">
         <div class="col-md-3"></div>
         <div class="col-md-5 block">
-          <h1>Keepurrrr</h1>
+          <h1>Hello {{user.name}},</h1>
           <br>
-          <h3>Hello {{user.name}}, welcome to our Shelter! From this page you can browse for pictures, memes, or items for, of, and about cats. When you find something that makes you purrr, you can save them to your boxes. You can also add your strays to the Shelter for others to view and save to their boxes. (And, you can also find and post non-cat stuff here, but this behavior is strongly discouraged.)</h3>
+          <h3>Welcome to our Shelter! From this page you can browse for pictures, memes, or items for, of, and about cats. When you find something that makes you purrr, you can save them to your boxes. You can also add your strays to the Shelter for others to view and save to their boxes. (And, you can also find and post non-cat stuff here, but this behavior is strongly discouraged.)</h3>
         </div>
         <div class="col-md-1">
-          <router-link :to="'/Home'">to your boxes!</router-link>
+          
         </div>
         <div class="col-md-1">
-          <button class="button logout" @click="logout(user)">logout</button>
+          
         </div>
         <div class="col-md-2"><!--buffer space--></div>
       </div><!--ROW B CLOSES HERE-->
       <div class="row C">
         <div class="col-md-3"></div>
-        <div class="col-md-4 card">
-          <form @submit.prevent="createKeep">
-                <input type="text" v-model="title" required placeholder="title of new purrr...">
-                <input type="text" v-model="imgUrl" required placeholder="Url of purrr...">
-                <input type="text" v-model="body" required placeholder="description of new purrr...">
-                <button type="submit">+</button>
-          </form>
+        <div class="col-md-4">
+          <div class="well">
+            <div class="row">
+              <div class="col-md-8">
+                  <h4>Add a new purrr!</h4>
+                  <form @submit.prevent="createKeep">
+                        <input type="text" v-model="title" required placeholder="title of new purrr...">
+                        <input type="text" v-model="imgUrl" required placeholder="Url of purrr...">
+                        <input type="text" v-model="body" required placeholder="description of new purrr...">
+                        <button type="submit">+</button>
+                  </form>
+              </div>
+              <div class="col-md-3">
+                  <img src="http://i44.photobucket.com/albums/f3/suhmantha/cat5color_zpsj9e3omnk.png">
+              </div>
+              
+            </div>
+          </div>
         </div>
         <div class="col-md-5"></div>
       </div>
@@ -48,14 +72,22 @@
                           </slot>
                         </div>
                         <div class="modal-body">
-                          <slot name="body">
-                            <select v-model="selectedVault">
-                              <option v-for="vault in vaults" v-bind:value="vault._id">
-                                  {{vault.name}}
-                              </option>
-                            </select>
-                            <button @click="saveKeep(keep, vault._id)">Send to your box</button>
-                          </slot>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <slot name="body">
+                                <select v-model="selectedVault">
+                                  <option v-for="vault in vaults" v-bind:value="vault._id">
+                                      {{vault.name}}
+                                  </option>
+                                </select>
+                                <button @click="saveKeep(keep, vault._id)">Send to your box</button>
+                              </slot>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                              
+                            </div>
+                          </div>
                         </div>
                         <div class="modal-footer">
                           <slot name="footer">
@@ -157,7 +189,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.card-columns{  background-color: lightslategray;
+.card-columns{  background-color: rgb(128,110,134);
   min-height: 50px;
   margin: 10px;
 }
@@ -188,9 +220,10 @@ img{
 a {
   color: #42b983;
 }
-/*.block {
-  background-color: black;
-}*/
+.logout {
+  
+}
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -198,7 +231,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(143, 10, 89, .1);
   display: table;
   transition: opacity .3s ease;
 }
@@ -209,7 +242,7 @@ a {
 }
 
 .modal-container {
-  width: 300px;
+  width: 600px;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;
