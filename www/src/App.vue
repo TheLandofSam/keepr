@@ -18,7 +18,9 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Boogaloo', cursive;
+  /*font-family: 'Lakki Reddy', cursive;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -29,7 +31,7 @@ export default {
 /*body, html{
   height: 100vh;
   background: url("http://i44.photobucket.com/albums/f3/suhmantha/catWallpaper_zps6hwlzmfz.jpg");
-  /*background-position: center;
+  background-position: center;
   background-repeat: repeat;
   background-size: cover;
   

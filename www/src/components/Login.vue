@@ -4,7 +4,7 @@
       <div class="row A">
         <div class="col-md-1"></div>
         <div class="col-md-3">
-          <h2>Keepurrr</h2>
+          
         </div>
         <div class="col-md-8"></div><!--there will probably further divs here-->
       </div><!--row A close-->
@@ -28,12 +28,22 @@
         <div class="col-md-3"></div>
       </div><!--row C close-->
       <div class="row D">
-        <h4>If you are thinking..."I love cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
-        <h4>If you are thinking..."I want cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
-        <h4>If you are thinking..."I must have cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
-        <h4>If you are thinking..."...stupid cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link> because you need some cats.</h4>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <h4>If you are thinking..."I love cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
+          <h4>If you are thinking..."I want cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
+          <h4>If you are thinking..."I must have cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
+          <h4>If you are thinking..."...stupid cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link> because you need some cats.</h4>
+        </div>
+        <div class="col-md-3"></div>
       </div>
-      <div class="row"><!--empty bottom buffer--></div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-5">
+          <img src="http://i44.photobucket.com/albums/f3/suhmantha/cat6colored_zpsgpw4nb7k.jpg">
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -62,5 +72,8 @@ export default {
 <style scoped>
 input {
   max-width: 300px;
+}
+img {
+  max-height: 200px;
 }
 </style>
