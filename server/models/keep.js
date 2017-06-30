@@ -11,14 +11,14 @@ let schema = new Schema({
   title: { type: String, required: true },
   imgUrl: { type: String, required: true},
   body:{type: String},
-  vaults: [{type: ObjectId, ref: models.vault.name, required: true}],
+  vaults: [{type: ObjectId, ref: models.vault.name}],
   created: { type: Number, required: true, default: Date.now() },
   creatorId: { type: ObjectId, ref: models.user.name, required: true},
-  // keepCount: {type: Number, default: 0},
-  // shareCount:{type: Number, default: 0},
-  // viewCount: {type: Number, default: 0},
+  keepCount: {type: Number, default: 0},
+  shareCount:{type: Number, default: 0},
+  viewCount: {type: Number, default: 0},
   author: {type: String},//you might need to pass in the user model here...not sure...
-  // private: {type: Boolean, default: false}//this useablity may not get hooked up in the end...
+  private: {type: Boolean, default: false}//this useablity may not get hooked up in the end...
 
 });
 

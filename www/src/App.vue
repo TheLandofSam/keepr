@@ -26,11 +26,12 @@ export default {
   
   
 }
-body, html{
+/*body, html{
   height: 100vh;
   background: url("http://i44.photobucket.com/albums/f3/suhmantha/catWallpaper_zps6hwlzmfz.jpg");
-  /*background-position: center;*/
+  /*background-position: center;
   background-repeat: repeat;
-  /*background-size: cover;*/
-}
+  background-size: cover;
+  
+}*/
 </style>

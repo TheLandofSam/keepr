@@ -97,6 +97,9 @@ export default new Vuex.Store ({
     },
     user(state, user) {
       state.user = user || {}
+    },
+    setNewKeeps(state, keep){
+      state.keeps = keeps
     }
   },
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
@@ -124,7 +127,14 @@ export default new Vuex.Store ({
     createKeep({ commit, dispatch }, keep) {
       api.post('/keeps', keep)
         .then(res => {
-          dispatch('getMyKeeps')///or vaults???
+          commit('setNewKeeps', res.data.data)
+          .then(res => {
+            dispatch('getKeeps')///or myKeeps???
+          .then(res => {
+            commit('setKeeps', res.data.data)
+          })
+        })
+         
         })
         .catch(handleError)
     },
@@ -142,6 +152,13 @@ export default new Vuex.Store ({
         })
         .catch(handleError)
     },
+    saveKeep({commit, dispatch}, keep, vaultId) {
+      api.post('/vaults'+ vault._id, keep)
+        .then(res=> {
+          dispatch('getKeepsByVaultId')
+        })
+        .catch(handleError)
+    },//IM NOT SURE ABOUT THIS!!!
 
 
     getAuth({commit, dispatch}) {
