@@ -60,7 +60,7 @@
               <h4>{{keep.title}}</h4>
               <h5>{{keep.body}}</h5>
              
-              <button class="modal-default-button" @click="openModal = true"> Add to a box!</button>
+              <button class="modal-default-button" @click="triggerModal(keep)"> Add to a box!</button>
               <modal v-if="openModal" @close="openModal = false">
                 <transition name="modal" v-if="openModal">
                   <div class="modal-mask">
@@ -153,6 +153,12 @@ export default {
     }
   },
   methods: {
+    triggerModal(keep){
+      this.selectedKeep = keep;
+      this.selectedVault = vault;
+      this.openModal = true;
+
+    }
     createKeep(){
       this.$store.dispatch('createKeep', {
         title: this.title,
