@@ -74,6 +74,8 @@
                         <div class="modal-body">
                           <div class="row">
                             <div class="col-md-6">
+
+
                               <slot name="body">
                                 <select v-model="selectedVault">
                                   <option v-for="vault in vaults" v-bind:value="vault._id">
@@ -83,10 +85,11 @@
                                 <button @click="saveKeep(keep, vault._id)">Send to your box</button>
                               </slot>
                             </div>
-                            <div class="col-md-1"></div>
+                            
                             <div class="col-md-5">
-                              
+                              <img src="http://i44.photobucket.com/albums/f3/suhmantha/cat7%20copy_zps4v99oebj.png">
                             </div>
+                            <div class="col-md-1"></div>
                           </div>
                         </div>
                         <div class="modal-footer">
@@ -189,7 +192,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.card-columns{  background-color: rgb(128,110,134);
+.card-columns{  background-color: rgb(181, 157, 180);
   min-height: 50px;
   margin: 10px;
 }

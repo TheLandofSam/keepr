@@ -2,7 +2,20 @@
   <div class="Home">
 
     <div class="container">
-      <div class="row A"><!--empty buffer--></div>
+      <div class="row A">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+          <img src="http://i44.photobucket.com/albums/f3/suhmantha/logo_zpslwie0kuo.jpg">
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-2">
+          <router-link :to="'/Shelter'"><img height="100" width="100" src="http://i44.photobucket.com/albums/f3/suhmantha/sleepcat_zpseogjzcdq.jpg"></router-link>
+        </div>
+        <div class="col-md-1">
+          <img height="55" width="200" @click="logout(user)"src="http://i44.photobucket.com/albums/f3/suhmantha/Logout_zpswppo7usx.jpg">
+        </div>
+        <div class="col-md-1"></div>
+      </div>
       <div class="row B">
         <div class="col-md-2"><!--buffer space--></div>
         <div class="col-md-3">
@@ -11,26 +24,36 @@
           </h2>
         </div>
         <div class="col-md-4"><!--buffer space--></div>
-        <div class="col-md-1"><router-link :to="'/Shelter'">Go to the shelter!</router-link></div>
-        <div class="col-md-1"><button class="button logout" @click="logout(user)">logout</button></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
         <div class="col-md-1"><!--buffer space--></div>
       </div>
       <div class="row C"><!--empty buffer--></div>
       <div class="row D">
+        <div class="col-md-3">
+          <div class="well">
+            <div class="row">
+              <div class="col-md-7">
+                <h4>Add a new box!</h4>
+                <form @submit.prevent="createVault">
+                        <input type="text" v-model="name" required placeholder="name of new box...">
+                        <input type="text" v-model="description" required placeholder="description of new box...">
+                        <button type="submit">+</button>
+                </form>
+              </div>
+              <div class="col-md-5">
+                <img height="150" width="80" src="http://i44.photobucket.com/albums/f3/suhmantha/cat2_zpsg7nxmvb2.png">
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-md-3" v-for="vault in vaults">
             <div class="well">
               <router-link :to="'/Box/' + vault._id">
-                {{vault.name}}
-                {{vault.description}}
+                <h4>{{vault.name}}</h4>
               </router-link>
+              <h5>{{vault.description}}</h5>
             </div>
-        </div>
-        <div class="col-md-3">
-          <form @submit.prevent="createVault">
-                  <input type="text" v-model="name" required placeholder="name of new box...">
-                  <input type="text" v-model="description" required placeholder="description of new box...">
-                  <button type="submit">+</button>
-          </form>
         </div>
       </div>
       <div class="row E">
