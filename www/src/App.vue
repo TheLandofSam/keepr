@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.jpg">
     <router-view></router-view>
   </div>
 </template>
@@ -28,12 +27,13 @@ export default {
   
   
 }
-/*body, html{
-  height: 100vh;
+body, html{
+  background-color: #ccc1ca; 
+  /*height: 100vh;
   background: url("http://i44.photobucket.com/albums/f3/suhmantha/catWallpaper_zps6hwlzmfz.jpg");
   background-position: center;
   background-repeat: repeat;
-  background-size: cover;
+  background-size: cover;*/
   
-}*/
+}
 </style>

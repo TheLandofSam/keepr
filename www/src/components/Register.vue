@@ -2,7 +2,9 @@
   <div class="register">
     <div class="container-fluid">
       <div class="row A">
-        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <img src="http://i44.photobucket.com/albums/f3/suhmantha/logo_zpslwie0kuo.jpg">
+        </div>
         <div class="col-md-4">
           <h2>Join Keepurrr (we have sooo many cats)!</h2>
         </div>
@@ -64,6 +66,8 @@ export default {
 input {
   max-width: 600px;
 }
-
+img {
+  float: right;
+}
 </style>
 

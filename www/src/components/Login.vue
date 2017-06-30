@@ -1,6 +1,16 @@
 <template>
   <div class="login">
-    <div class="container">
+    <div class="container-fluid">
+      <div class="row head">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+          <img src="http://i44.photobucket.com/albums/f3/suhmantha/logo_zpslwie0kuo.jpg">
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+          <h1> Welcome to Keepurrr, we are glad you stopped by!</h1>
+        </div>
+      </div>
       <div class="row A">
         <div class="col-md-1"></div>
         <div class="col-md-3">
@@ -10,14 +20,14 @@
       </div><!--row A close-->
       <div class="row"><!--empty buffer--></div>
       <div class="row B">
-        <div class="col-md-4"></div>
+        <div class="col-md-5"></div>
         <div class="col-md-4">
           <h3>login</h3>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
       </div><!--row B close-->
       <div class="row C">
-        <div class="col-md-3"></div>
+        <div class="col-md-4"></div>
         <div class="col-md-6">
           <form @submit.prevent="login">
             <input type="email" class="form-control" v-model="user.email" required placeholder="email">
@@ -25,23 +35,23 @@
             <button class="btn btn-default" type="submit">submit</button>
           </form>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
       </div><!--row C close-->
       <div class="row D">
-        <div class="col-md-3"></div>
+        <div class="col-md-4"></div>
         <div class="col-md-6">
           <h4>If you are thinking..."I love cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
           <h4>If you are thinking..."I want cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
           <h4>If you are thinking..."I must have cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link></h4>
           <h4>If you are thinking..."...stupid cats!"... then <router-link :to="'/register'">be a Keepurrr!</router-link> because you need some cats.</h4>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
       </div>
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-4"></div>
         <div class="col-md-5">
-          <img src="http://i44.photobucket.com/albums/f3/suhmantha/cat6colored_zpsgpw4nb7k.jpg">
+          <img src="http://i44.photobucket.com/albums/f3/suhmantha/cat6colored%20copy_zpssyvern52.png">
         </div>
       </div>
     </div>
@@ -76,4 +86,5 @@ input {
 img {
   max-height: 200px;
 }
+
 </style>

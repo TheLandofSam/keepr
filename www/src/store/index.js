@@ -23,7 +23,7 @@ let state = {
   myVaults: [{}],
   myKeeps: [{}],
   //Dummy Data
-  keeps: [{
+  keeps: [ /*{
     title: 'Learn to Draw the Meow Way',
     imgUrl: 'https://s-media-cache-ak0.pinimg.com/564x/b0/7f/71/b07f713b8fa296e871dd8c169ff86fd5.jpg',
     body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, officiis asperiores quisquam, temporibus sint veritatis',
@@ -71,7 +71,7 @@ let state = {
     shareCount: 300,
     viewCount: 900,
     author: 'JimyJonJones'
-  }],
+  }*/],
   error: {}
 }
 

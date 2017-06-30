@@ -3,13 +3,12 @@
     <div class="container">
       <div class="row A"><!--empty top buffer--></div>
       <div class="row B">
-        <div class="col-md-1"></div>
+        <div class="col-md-3"></div>
         <div class="col-md-5 block">
           <h1>Keepurrrr</h1>
           <br>
           <h3>Hello {{user.name}}, welcome to our Shelter! From this page you can browse for pictures, memes, or items for, of, and about cats. When you find something that makes you purrr, you can save them to your boxes. You can also add your strays to the Shelter for others to view and save to their boxes. (And, you can also find and post non-cat stuff here, but this behavior is strongly discouraged.)</h3>
         </div>
-        <div class="col-md-1"><!--buffer space--></div>
         <div class="col-md-1">
           <router-link :to="'/Home'">to your boxes!</router-link>
         </div>
@@ -19,7 +18,7 @@
         <div class="col-md-2"><!--buffer space--></div>
       </div><!--ROW B CLOSES HERE-->
       <div class="row C">
-        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
         <div class="col-md-4 card">
           <form @submit.prevent="createKeep">
                 <input type="text" v-model="title" required placeholder="title of new purrr...">
@@ -28,7 +27,7 @@
                 <button type="submit">+</button>
           </form>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-5"></div>
       </div>
       <div class="row D">
         <div class="col-md-3" v-for="(keep, index) in keeps">
