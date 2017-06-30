@@ -158,7 +158,7 @@ export default {
       this.selectedVault = vault;
       this.openModal = true;
 
-    }
+    },
     createKeep(){
       this.$store.dispatch('createKeep', {
         title: this.title,
